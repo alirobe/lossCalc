@@ -1,0 +1,104 @@
+<html>
+<head>
+<script src='js/knockout-2.2.1.js'></script>
+<script src='js/standards.js'></script>
+</head>
+
+<body>
+
+<h1> Standard Loss data entry  </h1>
+
+<table border = 1> 
+	<thead><TR>
+			<th> name </th>
+			<th>issue </th>
+			<th> allowed Reference Methods</th>
+			<th> fibre Type</th>
+			<th> max Length</th>
+			<th> reference Loss</th>
+			<th> connector Loss Test Cord</th>
+			<th> connector Loss Embeded</th>
+			<th> splice Loss</th>
+
+	</tr></thead>
+	<tbody data-bind="foreach: standards">
+		<tr data-bind="click: $root.goToStandard">
+			<td data-bind="text: name"> </td>
+			<td data-bind="text: issue"> </td>
+			<td data-bind="text: allowedReferenceMethods"> </td>
+			<td data-bind="text: fibreType"> </td>
+			<td data-bind="text: maxLength"> </td>
+			<td data-bind="text: referenceLoss"> </td>
+			<td data-bind="text: connectorLossTestcord"> </td>
+			<td data-bind="text: connectorLoss"> </td>
+			<td data-bind="text: spliceLoss"> </td>
+
+		</tr>
+	</tbody>
+</table>
+
+<table data-bind="with: selectedStandard">
+
+	<tr> <td> name </td> <td><input data-bind="value: name"> </input></td> </tr>
+	<tr> <td> issue </td> <td><input data-bind="value: issue"> </input></td> </tr>
+	<tr> <td> allowed reference Methods </td> <td><input data-bind="value: allowedReferenceMethods"> </input></td> </tr>
+	<tr> <td> fibre Type </td> <td><input data-bind="value: fibreType"> </input></td> </tr>
+	<tr> <td> Max Length</td> <td><input data-bind="value: maxLength"> </input></td> </tr>
+	<tr> <td> reference Loss </td> <td><input data-bind="value: referenceLoss"> </input></td> </tr>
+	<tr> <td> 1-2 connector Loss  </td> <td><input data-bind="value: connectorLossTestcord"> </input></td> </tr>
+	<tr> <td> embedded connector Loss </td> <td><input data-bind="value: connectorLoss"> </input></td> </tr>
+	<tr> <td> Splice Loss </td> <td><input data-bind="value: spliceLoss"> </input></td> </tr>
+	<tr> <td> Test wavelengths </td>
+		<td>
+		<table>
+		<tr data-bind="foreach: testWavelengths">		
+			<td>
+			<ul>
+			<li><label>  lambda  </label> <input data-bind="value: lambda"> </input></li>
+			<li><label>  uncertainty </label> <input data-bind="value: uncertaintyAllowance"> </input></li>
+			<li><label>  Loss per Km </label> <input data-bind="value: lossPerKm"> </input> </li>
+			<li><label>  Max Loss </label> <input data-bind="value: maxLoss"> </input></li>
+			</ul>
+			</td>
+		</tr>
+		</table></tr>
+
+</table>
+
+
+<script>
+	function safeNum(value) {
+		if ( isNaN(value) )
+			return 0;
+		else
+			return parseFloat(value);
+	};
+	
+	
+	console.log(standards);
+
+
+	
+	function FibreParameters() {
+		var self = this;
+		self.fibreLength;
+		
+	};
+	
+	function StandardsViewModel() {
+		var self = this;
+		self.standards = ko.observableArray(standards);
+		self.selectedStandard = ko.observable();
+		self.goToStandard = function(standard) {
+			self.selectedStandard(standard);
+		};
+	};
+	
+
+	ko.applyBindings(new StandardsViewModel());
+	
+	
+</script>
+</body>
+
+</html>
