@@ -24,7 +24,7 @@ function CalculatorViewModel() {
     });
     
     self.numberOfConnectors = ko.observable(2);
-    self.numberOfSplices = ko.observable(1);
+    self.numberOfSplices = ko.observable(2);
     
     self.availableStandards = standards;
     self.selectedStandard = ko.observable(standards[0]);
@@ -52,7 +52,12 @@ function CalculatorViewModel() {
     });
 
 
-    
+    self.detailIsVisible = ko.observable(0);
+    self.toggleDetail = function() {
+        self.detailIsVisible( ! self.detailIsVisible());
+    };
+
+
     self.validParamters = ko.computed(function() {
             return true;
     });

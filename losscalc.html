@@ -7,100 +7,112 @@
 </head>
 <body>
 
-<h1> Loss Budget Calculator </h1>
+
+<div class="calculator">
+    <div class="title">Loss</div>
+    <table class="params">
+        <tr class="header" > 
+                <td colspan=2> Cable Parameters</td>
+        </tr>
+        <tr class="entryrow">
+        <td> Fiber Length </td>
+        <td> 
+            <input type="number" data-bind="value: cableLength"/>
+            <select data-bind="options: distanceUnits,
+                                optionsText: 'name',
+                                value: selectedDistanceUnits "> </select>
+            (<span data-bind="text: adjustedDistance"></span> Km )
+            
+        </td>
+        </tr>
+        <tr class="entryrow">
+        <td> Connectors </td>
+        <td>
+            <span> <input type="number"  data-bind="value: numberOfConnectors"> </span>
+            <span>Splices </span> <span> <input type="number" data-bind="value: numberOfSplices"/> </span>
+        </td>
+        </tr>
+
+        <tr class="spacer"></tr>
+        <tr class="header">
+            <td colspan=2> Other Components</td>
+        </tr>
+
+        <tr class="entryrow">
+            <td>  Switch Loss </td>
+            <td> <input type="number" data-bind="value: switchLoss"/> dB </td>
+        </tr>
+
+        <tr class="entryrow">
+            <td>  Splitter Loss </td>
+            <td> <input type="number" data-bind="value: splitterLoss"/> dB </td>
+        </tr>
+
+        <tr class="entryrow">
+            <td> Other Loss </td>
+            <td> <input type="number" data-bind="value: otherLoss"/> dB </td>
+        </tr>
+
+        <tr class="entryrow">
+            <td> Test Standard </td>
+            <td>
+                <select data-bind="options: availableStandards,
+                                            optionsCaption: 'Select Standard',
+                                            optionsText: 'name',
+                                            value: selectedStandard "/> 
+            </td>
+        </tr>
+        <tr class="spacer"></tr>
+    </table>
 
 
-<table class="calculator">
-<tr class="header" > 
-	<td colspan=2> Cable Parameters</td>
-</tr>
-<tr class="entryrow">
-<td> Fiber Length </td>
-<td> 
-    <input type="number" data-bind="value: cableLength"/>
-    <select data-bind="options: distanceUnits,
-                        optionsText: 'name',
-                        value: selectedDistanceUnits "> </select>
-    (<span data-bind="text: adjustedDistance"></span> Km )
-    
-</td>
-</tr>
-<tr class="entryrow">
-<td> Connectors </td>
-<td>
-    <span> <input type="number"  data-bind="value: numberOfConnectors"> </span>
-    <span>Splices </span> <span> <input type="number" data-bind="value: numberOfSplices"/> </span>
-</td>
-</tr>
-
-
-	<td colspan=2> Other Components Loss </td>
-</tr>
-
-<tr class="entryrow">
-	<td>  Switch Loss </td>
-	<td> <input type="number" data-bind="value: switchLoss"/> dB </td>
-</tr>
-
-<tr class="entryrow">
-<td>  Splitter Loss </td>
-<td> <input type="number" data-bind="value: splitterLoss"/> dB </td>
-</tr>
-
-<tr class="entryrow">
-<td> Other Loss </td>
-<td> <input type="number" data-bind="value: otherLoss"/> dB </td>
-</tr>
-
-<tr class="entryrow">
-<td> Test Standard </td>
-<td>
-	<select data-bind="options: availableStandards,
-				optionsCaption: 'Select Standard',
-				optionsText: 'name',
-				value: selectedStandard "/> 
-</td>
-</tr>
-</table>
-
-
-<table>
-<tr data-bind="foreach: lossResults" >    
-	
-    <td> 
-        <table>
-            <tr data-bind="text: testWavelength.lambda">  </tr>  
-            <tr class="subtotal">
-                <td> Fibre Loss <span data-bind="text: testWavelength.lossPerKm"/> db/km</td>
-                <td> <span data-bind="text: fibreLoss.toFixed(2)"></span> dB</td>
-    
+    <div data-bind="foreach: lossResults" >    
+        <table class="result">
+            <tr class="header">
+                <td colspan=2 data-bind="text: testWavelength.lambda">  </td>  
             </tr>
-
-            <tr class="subtotal">
-                <td> Connector Loss </td>
-                <td> <span data-bind="text: $parent.connectorLoss().toFixed(2)"></span> dB </td>
-            </tr>
-
-
-            <tr class="subtotal">
-                <td> Splice Loss </td>
-                <td> <span data-bind="text: $parent.spliceLoss().toFixed(2)"></span> dB</td>
-            </tr>
-
-
-            <tr class="subtotal">
-                <td> Other Loss </td>
-                <td> <span data-bind="text: $parent.totalOtherLoss"></span> dB </td>
-            </tr>
-
-            <tr class="total">
-                <td> Allowed Loss </td>
-                <td> <span data-bind="text: totalLoss.toFixed(2)"></span> dB </td>
+            <tr class="total" data-bind="click: $parent.toggleDetail">
+                <td class ="total"> Allowed Loss </td>
+                <td class="total"> 
+                    <span data-bind="text: totalLoss.toFixed(2)"></span> dB 
+                </td>
             </tr>		
+            <tr class="resultrow" data-bind="visible: $parent.detailIsVisible">
+                <td> Fibre ( <span data-bind="text: testWavelength.lossPerKm"></span> <span>dB/km)</span></td>
+                <td class="subtotal"> 
+                    <span data-bind="text: fibreLoss.toFixed(2)"></span> dB
+                </td>
+    
+            </tr>
+
+            <tr class="resultrow" data-bind="visible: $parent.detailIsVisible">
+                <td> Connectors </td>
+                <td class="subtotal"> 
+                    <span data-bind="text: $parent.connectorLoss().toFixed(2)"></span> dB 
+                </td>
+            </tr>
+
+
+            <tr class="resultrow" data-bind="visible: $parent.detailIsVisible">
+                <td> Splices </td>
+                <td class="subtotal"> 
+                    <span data-bind="text: $parent.spliceLoss().toFixed(2)"></span> dB
+                </td>
+            </tr>
+
+
+            <tr class="resultrow" data-bind="visible: $parent.detailIsVisible">
+                <td> Others </td>
+                <td class="subtotal"> 
+                    <span data-bind="text: $parent.totalOtherLoss"></span> dB 
+                </td>
+            </tr>
+            <tr class="spacer"></tr>
+
         </table>
-    </td>
-</tr>
-</table>
+    </div>
+    <div style="clear: both" ></div>
+</div>
 
 <script>
 

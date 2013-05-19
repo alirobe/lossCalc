@@ -1,16 +1,72 @@
-table,td {
-	border:1px solid #ccc;
-	border-collapse:collapse;
-	text-align:left;
-	vertical-align:top;
-	padding: 5px;
+body {
+    font-family: arial;
+    color: #002E41;
+    background-color: #BCC3C5;
 }
 
-th {
-	background-color: green;
-	color:white;
+td {
+    border:1px ;
+    border-radius: 0.3em;
+    text-align:left;
+    padding: 0.2em 0.2em 0.2em 0.5em;
+}
+
+.header {
+    padding: .3em;
+    background-color: #949494;
+    color: #EEEEEE;
+}
+
+.title {
+    width: auto;
+    float: left;
+    padding: .6em;
+    border-radius: 0.3em;
+    background-color: #017CB1;
+    color: #EEEEEE;
 }
 
 input[type="number"] { 
-	width: 4em; 
+    width: 4em; 
+}
+
+.calculator {
+    border-radius: 0.3em;
+    width: 500px;
+
+    padding: 1em;
+    clear: right;
+    background-color: #BCC3C5;
+
+}
+
+.spacer { 
+    height: 0.1em;
+}
+
+.params {
+    border-radius: 0.3em;
+    width: 100%;
+    background-color: #66606B;
+}
+
+.entryrow {
+    background-color: #c8c5cB;
+
+}
+
+.result {
+    border-radius: 0.3em;
+    background-color: #66606B;
+    width: 50%;
+    float: left;
+}
+
+.resultrow {
+    background-color: #F4F400;
+}
+
+.total {
+    background-color: #FFB057;
+    background-color: #BAF77B;
 }
