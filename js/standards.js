@@ -21,6 +21,18 @@
 	};
 	
 	standards = [
+		new TestStandard("TIA 568-C-0/526-15-A : MM Link" , '2.2','1,2','OM1','',0.1,0.3,0.75,0.3, 
+			[ 
+				new TestWavelength(850, 0.1,3.5,''),
+				new TestWavelength(1300, 0.1,1.5,''),
+			]
+		) ,
+		new TestStandard("TIA 568-C-0/526-7 : SM Link" , '2.2','1,2','OM1','',0.1,0.3,0.75,0.3, 
+			[ 
+				new TestWavelength(1310, 0.1,1.0,''),
+				new TestWavelength(1550, 0.1,1.0,''),
+			]
+		) ,
 		new TestStandard("IEC 11801 / 14763-3:  MM Link" , '2.2','1,2','OM1','',0.1,0.3,0.75,0.3, 
 			[ 
 				new TestWavelength(850, 0.1,3.5,''),

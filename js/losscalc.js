@@ -30,9 +30,9 @@ function CalculatorViewModel() {
     self.selectedStandard = ko.observable(standards[0]);
     
 
-    self.splitterLoss = ko.observable();
-    self.switchLoss = ko.observable();
-    self.otherLoss = ko.observable();
+    self.splitterLoss = ko.observable(0);
+    self.switchLoss = ko.observable(0);
+    self.otherLoss = ko.observable(0);
     
     self.connectorLoss = ko.computed(function() {
         if ( self.selectedStandard) {
