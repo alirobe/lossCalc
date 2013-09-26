@@ -11,6 +11,15 @@
 <div class="calculator">
     <div class="title">Insertion Loss Calculator</div>
     <table class="params">
+    	<tr class="entryrow" >
+            
+            <td colspan=2>
+                <select data-bind="options: availableStandards,
+                                            optionsCaption: 'Select Standard',
+                                            optionsText: 'name',
+                                            value: selectedStandard "/> 
+            </td>
+        </tr>
         <tr class="header" > 
                 <td colspan=2> Fibre Parameters</td>
         </tr>
@@ -21,16 +30,21 @@
             <select data-bind="options: distanceUnits,
                                 optionsText: 'name',
                                 value: selectedDistanceUnits "> </select>
-            (<span data-bind="text: adjustedDistance"></span> Km )
+                 
             
         </td>
         </tr>
         <tr class="entryrow">
-        <td> Connectors </td>
-        <td>
-            <span> <input type="number"  data-bind="value: numberOfConnectors"> </span>
-            <span>Splices </span> <span> <input type="number" data-bind="value: numberOfSplices"/> </span>
-        </td>
+        	<td> Connectors </td>
+	        <td>
+	            <span> <input type="number"  data-bind="value: numberOfConnectors"/> </span>
+	        </td>
+        </tr>
+        <tr class="entryrow">  
+			<td>Splices </td>
+            <td> 
+            	<span> <input type="number" data-bind="value: numberOfSplices"/> </span>
+        	</td>
         </tr>
 
         <tr class="spacer"></tr>
@@ -53,15 +67,7 @@
             <td> <input type="number" data-bind="value: otherLoss"/> dB </td>
         </tr>
 
-        <tr class="entryrow">
-            <td> Test Standard </td>
-            <td>
-                <select data-bind="options: availableStandards,
-                                            optionsCaption: 'Select Standard',
-                                            optionsText: 'name',
-                                            value: selectedStandard "/> 
-            </td>
-        </tr>
+        
         <tr class="spacer"></tr>
     </table>
 
@@ -72,8 +78,7 @@
                 <td colspan=2 data-bind="text: testWavelength.lambda">  </td>  
             </tr>
             <tr class="total" data-bind="click: $parent.toggleDetail">
-                <td class ="total"> Allowed Loss </td>
-                <td class="total"> 
+                 <td class="total"> 
                     <span data-bind="text: totalLoss.toFixed(2)"></span> dB 
                 </td>
             </tr>		
