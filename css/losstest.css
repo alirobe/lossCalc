@@ -14,7 +14,9 @@ td {
 td.total {
 	width: 40%;
 }
-
+.calculator {
+	width: 28em;
+}
 .header {
     padding: .3em;
     background-color: #949494;
