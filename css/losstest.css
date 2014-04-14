@@ -3,7 +3,14 @@ body {
     color: #002E41;
     background-color: #BCC3C5;
 }
-
+footer {
+    font-family: arial;
+	font-size: small;
+    color: #002E41;
+    background-color: #BCC3C5;
+	text-align:center;
+	width: 35em;
+}
 td {
     border:1px ;
     border-radius: 0.3em;
