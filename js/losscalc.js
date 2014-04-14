@@ -52,7 +52,7 @@ function CalculatorViewModel() {
     });
 
 
-    self.detailIsVisible = ko.observable(0);
+    self.detailIsVisible = ko.observable(1);
     self.toggleDetail = function() {
         self.detailIsVisible( ! self.detailIsVisible());
     };

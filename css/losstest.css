@@ -11,6 +11,10 @@ td {
     padding: 0.2em 0.2em 0.2em 0.5em;
 }
 
+td.total {
+	width: 40%;
+}
+
 .header {
     padding: .3em;
     background-color: #949494;
@@ -56,17 +60,16 @@ input[type="number"] {
 }
 
 .result {
-    border-radius: 0.3em;
     background-color: #66606B;
     width: 50%;
     float: left;
 }
 
-.resultrow {
-    background-color: #F4F400;
+tr.resultrow {
+    background-color: #FeF400;
 }
 
-.total {
-    background-color: #FFB057;
+tr.total {
     background-color: #BAF77B;
+	
 }

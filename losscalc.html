@@ -75,16 +75,12 @@
     <div data-bind="foreach: lossResults" >    
         <table class="result">
             <tr class="header">
-                <td colspan=2 data-bind="text: testWavelength.lambda">  </td>  
+                <td colspan=2 data-bind="text: testWavelength.lambda , click: $parent.toggleDetail">  </td>  
             </tr>
-            <tr class="total" data-bind="click: $parent.toggleDetail">
-                 <td colspan=2 class="total" > 
-                    <span data-bind="text: totalLoss.toFixed(2)"></span> dB 
-                </td>
-            </tr>		
+   
             <tr class="resultrow" data-bind="visible: $parent.detailIsVisible">
-                <td> Fibre ( <span data-bind="text: testWavelength.lossPerKm"></span> <span>dB/km)</span></td>
-                <td class="subtotal"> 
+                <td> Fibre(<span data-bind="text: testWavelength.lossPerKm"></span> <span>dB/km)</span></td>
+                <td class="total"> 
                     <span data-bind="text: fibreLoss.toFixed(2)"></span> dB
                 </td>
     
@@ -92,7 +88,7 @@
 
             <tr class="resultrow" data-bind="visible: $parent.detailIsVisible">
                 <td> Connectors </td>
-                <td class="subtotal"> 
+                <td class="total"> 
                     <span data-bind="text: $parent.connectorLoss().toFixed(2)"></span> dB 
                 </td>
             </tr>
@@ -100,7 +96,7 @@
 
             <tr class="resultrow" data-bind="visible: $parent.detailIsVisible">
                 <td> Splices </td>
-                <td class="subtotal"> 
+                <td class="total"> 
                     <span data-bind="text: $parent.spliceLoss().toFixed(2)"></span> dB
                 </td>
             </tr>
@@ -108,10 +104,16 @@
 
             <tr class="resultrow" data-bind="visible: $parent.detailIsVisible">
                 <td> Others </td>
-                <td class="subtotal"> 
-                    <span data-bind="text: $parent.totalOtherLoss"></span> dB 
+                <td class="total"> 
+                    <span data-bind="text: $parent.totalOtherLoss().toFixed(2)"></span> dB 
                 </td>
             </tr>
+			<tr class="total">
+				<td > Total Loss </td>
+                 <td class="total" > 
+                    <span data-bind="text: totalLoss.toFixed(2)"></span> dB 
+                </td>
+            </tr>		
             <tr class="spacer"></tr>
 
         </table>
