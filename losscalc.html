@@ -26,7 +26,7 @@
         <tr class="entryrow">
         <td> Fiber Length </td>
         <td> 
-            <input type="number" data-bind="value: cableLength"/>
+            <input type="number" min="0" data-bind="value: cableLength"/>
             <select data-bind="options: distanceUnits,
                                 optionsText: 'name',
                                 value: selectedDistanceUnits "> </select>
@@ -37,13 +37,13 @@
         <tr class="entryrow">
         	<td> Connectors </td>
 	        <td>
-	            <span> <input type="number"  data-bind="value: numberOfConnectors"/> </span>
+	            <span> <input type="number"  min="0" data-bind="value: numberOfConnectors"/> </span>
 	        </td>
         </tr>
         <tr class="entryrow">  
 			<td>Splices </td>
             <td> 
-            	<span> <input type="number" data-bind="value: numberOfSplices"/> </span>
+            	<span> <input type="number" min="0" data-bind="value: numberOfSplices"/> </span>
         	</td>
         </tr>
 
@@ -54,17 +54,17 @@
 
         <tr class="entryrow">
             <td>  Switch Loss </td>
-            <td> <input type="number" data-bind="value: switchLoss"/> dB </td>
+            <td> <input type="number" min="0" data-bind="value: switchLoss"/> dB </td>
         </tr>
 
         <tr class="entryrow">
             <td>  Splitter Loss </td>
-            <td> <input type="number" data-bind="value: splitterLoss"/> dB </td>
+            <td> <input type="number" min="0" data-bind="value: splitterLoss"/> dB </td>
         </tr>
 
         <tr class="entryrow">
             <td> Other Loss </td>
-            <td> <input type="number" data-bind="value: otherLoss"/> dB </td>
+            <td> <input type="number"  min="0" data-bind="value: otherLoss"/> dB </td>
         </tr>
 
         
